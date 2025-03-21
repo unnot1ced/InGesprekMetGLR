@@ -1,5 +1,5 @@
 
-![Logo](https://postimg.cc/Wtg2ttMK)
+![Logo](https://i.postimg.cc/SQVRJQ5z/Header-Github-1.png)
 
 
 # In gesprek met
