@@ -28,12 +28,12 @@ function App() {
 
   const handleRoomJoin = (e) => {
     e.preventDefault();
-    if (room && adminCode === 'IGM2024') {
+    if (room && adminCode === 'IGM2025ADM1n.') {
       setAuthenticated(true);
       socket.emit('joinAdminPanel', room);
       setConnected(true);
     } else {
-      alert('Invalid admin code');
+      alert('Foute admin code.. :)');
     }
   };
 
@@ -121,32 +121,49 @@ function App() {
     };
   }, []);
 
+  // Add the team name mapping function
+  const getTeamDisplayName = (teamId) => {
+    const teamNameMap = {
+      "Red Team": "Media-vormgeven",
+      "Orange Team": "Media-manager",
+      "Yellow Team": "AV-specialist",
+      "Darkyellow Team": "Fotografie",
+      "Pink Team": "Redactie-medewerker",
+      "Lavender Team": "Mediamaker",
+      "Purple Team": "Medewerker-sign",
+      "Turqoise Team": "Podium-evenementen",
+      "Lightblue Team": "ICT-media",
+      "Blue Team": "Creative-software-developer"
+    };
+    return teamNameMap[teamId] || teamId;
+  };
+
   if (!authenticated) {
     return (
       <div className="admin-login">
         <h1>In Gesprek Met - Admin Panel</h1>
         {connectionError ? (
           <div className="error-message">
-            <p>Cannot connect to server! Please make sure the server is running.</p>
-            <button onClick={() => socket.connect()}>Retry Connection</button>
+            <p>Uh oh! De server draait niet of je kan niet verbinden :(</p>
+            <button onClick={() => socket.connect()}>Probeer opnieuw</button>
           </div>
         ) : (
           <form onSubmit={handleRoomJoin}>
             <input 
               type="text" 
-              placeholder="Enter Room Code" 
+              placeholder="Room code" 
               value={room} 
               onChange={(e) => setRoom(e.target.value)}
               required
             />
             <input 
               type="password" 
-              placeholder="Enter Admin Code" 
+              placeholder="Typ de Admin Code" 
               value={adminCode} 
               onChange={(e) => setAdminCode(e.target.value)}
               required
             />
-            <button type="submit">Connect as Admin</button>
+            <button type="submit">Meedoen als Admin</button>
           </form>
         )}
       </div>
@@ -166,7 +183,7 @@ function App() {
         <div className="room-info">
           <span>Room: {room}</span>
           <span>Status: {gameStarted ? 'Game in Progress' : 'Waiting to Start'}</span>
-          {gameStarted && <span>Question: {questionNumber}/{totalQuestions}</span>}
+          {gameStarted && <span>Vraag: {questionNumber}/{totalQuestions}</span>}
         </div>
         <div className="admin-controls">
           {!gameStarted && (
@@ -175,17 +192,17 @@ function App() {
               onClick={startGame}
               disabled={Object.values(teamPlayers).every(team => team.players.length === 0)}
             >
-              Start Game
+              Start Spel
             </button>
           )}
           {gameStarted && !winner && (
             <button className="next-question-btn" onClick={nextQuestion}>
-              Next Question
+              Volgende vraag
             </button>
           )}
           {(gameStarted || winner) && (
             <button className="reset-game-btn" onClick={resetGame}>
-              Reset Game
+              Reset Spel
             </button>
           )}
         </div>
@@ -194,14 +211,14 @@ function App() {
       <div className="admin-content">
         {!gameStarted ? (
           <div className="waiting-room-panel">
-            <h2>Teams Ready</h2>
+            <h2>Teams Klaar voor de start!</h2>
             <div className="teams-grid">
               {Object.entries(teamPlayers).map(([teamName, teamData]) => (
                 <div 
                   key={teamName} 
                   className={`team-card ${teamName.toLowerCase().replace(' ', '-')}`}
                 >
-                  <h3>{teamName}</h3>
+                  <h3>{getTeamDisplayName(teamName)}</h3>
                   <div className="player-count">{teamData.players.length} Players</div>
                   <div className="player-list">
                     {teamData.players.map((player, index) => (
@@ -216,11 +233,11 @@ function App() {
           <div className="game-over-panel">
             <h2>Game Over</h2>
             <div className="winner-announcement">
-              <h3>The Winner is:</h3>
+              <h3>De Winnaar is:</h3>
               <div className="winner-team">{winner}</div>
             </div>
             <div className="final-scores">
-              <h3>Final Scores</h3>
+              <h3>Eindscores</h3>
               <div className="scores-list">
                 {scores.map((team, index) => (
                   <div 
@@ -237,7 +254,7 @@ function App() {
         ) : (
           <div className="game-panel">
             <div className="question-panel">
-              <h2>Current Question</h2>
+              <h2>Huidige vraag</h2>
               <div className="question-display">
                 <p className="question-text">{currentQuestion}</p>
                 {questionImage && (
@@ -252,14 +269,14 @@ function App() {
               </div>
               {correctAnswer && (
                 <div className="correct-answer">
-                  <h3>Correct Answer:</h3>
+                  <h3>Goede antwoord:</h3>
                   <p>{correctAnswer}</p>
                 </div>
               )}
             </div>
 
             <div className="answers-panel">
-              <h2>Player Answers</h2>
+              <h2>Antwoorden spelers</h2>
               <div className="answers-list">
                 {playerAnswers.length > 0 ? (
                   playerAnswers.map((answer, index) => (
@@ -281,7 +298,7 @@ function App() {
             </div>
 
             <div className="scores-panel">
-              <h2>Current Scores</h2>
+              <h2>Huidige Scores</h2>
               <div className="scores-list">
                 {scores.map((team, index) => (
                   <div 
@@ -294,15 +311,9 @@ function App() {
                 ))}
               </div>
             </div>
-          </div>
+          </div>  
         )}
       </div>
-      <button onClick={() => togglePowerups(true)} className="toggle-powerups-btn">
-        Enable Power-ups
-      </button>
-      <button onClick={() => togglePowerups(false)} className="toggle-powerups-btn">
-        Disable Power-ups
-      </button>
     </div>
   );
 }

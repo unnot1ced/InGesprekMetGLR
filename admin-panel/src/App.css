@@ -1,9 +1,14 @@
 :root {
   --red-team: #ff5252;
-  --blue-team: #4285f4;
-  --green-team: #0f9d58;
+  --orange-team: #FF9800;
   --yellow-team: #ffab40;
+  --darkyellow-team: #FFC107;
+  --pink-team: #E91E63;
+  --lavender-team: #9C27B0;
   --purple-team: #aa47bc;
+  --turqoise-team: #009688;
+  --lightblue-team: #03A9F4;
+  --blue-team: #4285f4;
   --admin-primary: #2d3748;
   --admin-secondary: #4a5568;
   --admin-accent: #3182ce;
@@ -285,10 +290,15 @@ body {
 }
 
 .player-answer.red-team { border-left-color: var(--red-team); }
-.player-answer.blue-team { border-left-color: var(--blue-team); }
-.player-answer.green-team { border-left-color: var(--green-team); }
+.player-answer.orange-team { border-left-color: var(--orange-team); }
 .player-answer.yellow-team { border-left-color: var(--yellow-team); }
+.player-answer.darkyellow-team { border-left-color: var(--darkyellow-team); }
+.player-answer.pink-team { border-left-color: var(--pink-team); }
+.player-answer.lavender-team { border-left-color: var(--lavender-team); }
 .player-answer.purple-team { border-left-color: var(--purple-team); }
+.player-answer.turqoise-team { border-left-color: var(--turqoise-team); }
+.player-answer.lightblue-team { border-left-color: var(--lightblue-team); }
+.player-answer.blue-team { border-left-color: var(--blue-team); }
 
 .player-team {
   font-size: 0.85rem;
@@ -325,10 +335,15 @@ body {
 }
 
 .team-score.red-team { border-left-color: var(--red-team); }
-.team-score.blue-team { border-left-color: var(--blue-team); }
-.team-score.green-team { border-left-color: var(--green-team); }
+.team-score.orange-team { border-left-color: var(--orange-team); }
 .team-score.yellow-team { border-left-color: var(--yellow-team); }
+.team-score.darkyellow-team { border-left-color: var(--darkyellow-team); }
+.team-score.pink-team { border-left-color: var(--pink-team); }
+.team-score.lavender-team { border-left-color: var(--lavender-team); }
 .team-score.purple-team { border-left-color: var(--purple-team); }
+.team-score.turqoise-team { border-left-color: var(--turqoise-team); }
+.team-score.lightblue-team { border-left-color: var(--lightblue-team); }
+.team-score.blue-team { border-left-color: var(--blue-team); }
 
 .team-score.winner {
   background-color: rgba(15, 157, 88, 0.1);

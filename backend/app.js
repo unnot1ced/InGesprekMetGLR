@@ -226,7 +226,11 @@ const questions = [
   }
 ];
 
-const TEAMS = ['Red Team', 'Blue Team', 'Green Team', 'Yellow Team', 'Purple Team'];
+const TEAMS = [
+  'Red Team', 'Orange Team', 'Yellow Team', 'Darkyellow Team', 
+  'Pink Team', 'Lavender Team', 'Purple Team', 'Turqoise Team', 
+  'Lightblue Team', 'Blue Team'
+];
 
 const rooms = {};
 
@@ -264,33 +268,109 @@ function handleAllAnswersSubmitted(room) {
     const gameRoom = rooms[room];
     clearTimeout(gameRoom.questionTimeout);
 
+    // Step 1: Organize answers by team
+    const teamAnswers = {};
+    
+    // Initialize teamAnswers with empty arrays for each team
+    Object.keys(gameRoom.teams).forEach(teamName => {
+      teamAnswers[teamName] = [];
+    });
+    
+    // Group answers by team
+    Array.from(gameRoom.answers.values()).forEach(answer => {
+      if (teamAnswers[answer.team]) {
+        teamAnswers[answer.team].push(answer);
+      }
+    });
+    
+    // Step 2: Determine majority answer for each team
+    const teamMajorityAnswers = {};
+    const teamResults = {};
+    
+    Object.entries(teamAnswers).forEach(([teamName, answers]) => {
+      // Skip teams with no players/answers
+      if (answers.length === 0) return;
+      
+      // Count votes for each answer
+      const answerCounts = {};
+      answers.forEach(answer => {
+        const { answerIndex } = answer;
+        answerCounts[answerIndex] = (answerCounts[answerIndex] || 0) + 1;
+      });
+      
+      // Find the most voted answer
+      let majorityIndex = null;
+      let maxVotes = 0;
+      
+      Object.entries(answerCounts).forEach(([index, count]) => {
+        if (count > maxVotes) {
+          maxVotes = count;
+          majorityIndex = parseInt(index);
+        }
+      });
+      
+      // Handle edge case: ties go to the first answer in the list (deterministic)
+      teamMajorityAnswers[teamName] = majorityIndex;
+      
+      // Determine if team's answer is correct and award points
+      const isCorrect = majorityIndex === gameRoom.correctAnswer;
+      teamResults[teamName] = {
+        majorityIndex,
+        isCorrect,
+        totalAnswers: answers.length,
+        answerDistribution: answerCounts
+      };
+      
+      // Award points if the team's majority answer is correct
+      if (isCorrect) {
+        const pointsToAdd = gameRoom.teams[teamName].doublePointsActive ? 2 : 1;
+        gameRoom.teams[teamName].score += pointsToAdd;
+      }
+    });
+    
     // Get teams with scores
     const teamScores = Object.entries(gameRoom.teams)
-      .map(([name, data]) => {
-        // Calculate team score by summing up player scores
-        return {
-          name,
-          score: data.score,
-          players: data.players.map(p => ({
-            name: p.name,
-            id: p.id,
-            score: data.score / data.players.length // Distribute team score evenly for display
-          }))
-        };
-      })
+      .map(([name, data]) => ({
+        name,
+        score: data.score,
+        players: data.players.map(p => ({
+          name: p.name,
+          id: p.id,
+          score: data.score / data.players.length // Distribute team score evenly for display
+        }))
+      }))
       .sort((a, b) => b.score - a.score);
 
-    // Collect answers and separate them by correct/incorrect
-    const allAnswers = Array.from(gameRoom.answers.values());
+    // Collect answers information for the results display
     const correctAnswer = gameRoom.currentQuestion.answers[gameRoom.correctAnswer].text;
-    const correctAnswers = allAnswers.filter(a => a.isCorrect);
-    const incorrectAnswers = allAnswers.filter(a => !a.isCorrect);
+    
+    // Create a mapping of which teams got it right vs wrong
+    const correctTeams = [];
+    const incorrectTeams = [];
+    
+    Object.entries(teamResults).forEach(([teamName, result]) => {
+      const answerText = gameRoom.currentQuestion.answers[result.majorityIndex]?.text || "No answer";
+      const teamInfo = {
+        team: teamName,
+        majorityAnswer: answerText,
+        distribution: result.answerDistribution,
+        players: gameRoom.teams[teamName].players.map(p => p.name)
+      };
+      
+      if (result.isCorrect) {
+        correctTeams.push(teamInfo);
+      } else {
+        incorrectTeams.push(teamInfo);
+      }
+    });
 
     // Store last answers for scoreboard that joins later
     gameRoom.lastAnswers = {
       correct: correctAnswer,
-      correctAnswers,
-      incorrectAnswers
+      correctTeams,
+      incorrectTeams,
+      individualAnswers: Array.from(gameRoom.answers.values()),
+      teamVotes: teamResults
     };
 
     io.to(room).emit("roundResults", {
@@ -712,22 +792,19 @@ io.on("connection", (socket) => {
       // Check if player already answered
       if (rooms[room].answers.has(socket.id)) return;
       
-      const isCorrect = answerIndex === rooms[room].correctAnswer;
-      
-      // Add points to team if correct, with double points if active
-      if (isCorrect) {
-        const pointsToAdd = rooms[room].teams[playerTeam].doublePointsActive ? 2 : 1;
-        rooms[room].teams[playerTeam].score += pointsToAdd;
-      }
-      
-      // Record the answer
+      // Record the answer (don't evaluate correctness or award points yet)
       rooms[room].answers.set(socket.id, {
         playerId: socket.id,
         playerName,
         team: playerTeam,
         answerIndex,
-        isCorrect,
-        pointsEarned: isCorrect ? (rooms[room].teams[playerTeam].doublePointsActive ? 2 : 1) : 0
+        isCorrect: answerIndex === rooms[room].correctAnswer // Still record if it's correct for reference
+      });
+      
+      // Notify everyone that a player has answered (without revealing correctness)
+      io.to(room).emit("playerAnswered", {
+        playerName,
+        team: playerTeam
       });
       
       // Check if all players have answered

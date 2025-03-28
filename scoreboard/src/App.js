@@ -8,6 +8,22 @@ const socket = io("ws://localhost:5000", {
   reconnectionDelay: 1000,
 });
 
+const getTeamDisplayName = (teamId) => {
+  const teamNameMap = {
+    "Red Team": "Media-vormgeven",
+    "Orange Team": "Media-manager",
+    "Yellow Team": "AV-specialist",
+    "Darkyellow Team": "Fotografie",
+    "Pink Team": "Redactie-medewerker",
+    "Lavender Team": "Mediamaker",
+    "Purple Team": "Medewerker-sign",
+    "Turqoise Team": "Podium-evenementen",
+    "Lightblue Team": "ICT-media",
+    "Blue Team": "Creative-software-developer"
+  };
+  return teamNameMap[teamId] || teamId;
+};
+
 function App() {
   const [room, setRoom] = useState('');
   const [connected, setConnected] = useState(false);
@@ -64,7 +80,6 @@ function App() {
     socket.on('showResults', (data) => {
       setShowingResults(true);
       
-      // Group scores by team
       const teams = {};
       data.scores.forEach(player => {
         if (!teams[player.team]) {
@@ -80,7 +95,6 @@ function App() {
       setTeamScores(teams);
       setNextQuestionTimer(data.nextQuestionIn);
       
-      // Start countdown for next question
       const startTime = Date.now();
       const interval = setInterval(() => {
         const elapsed = Date.now() - startTime;
@@ -126,8 +140,8 @@ function App() {
         <h1>In Gesprek Met - Scoreboard</h1>
         {connectionError ? (
           <div className="error-message">
-            <p>Cannot connect to server! Please make sure the server is running.</p>
-            <button onClick={() => socket.connect()}>Retry Connection</button>
+            <p>Uh oh! De server draait niet of je kan niet verbinden :(</p>
+            <button onClick={() => socket.connect()}>Opnieuw proberem</button>
           </div>
         ) : (
           <form onSubmit={handleRoomJoin}>
@@ -138,7 +152,7 @@ function App() {
               onChange={(e) => setRoom(e.target.value)}
               required
             />
-            <button type="submit">Connect to Room</button>
+            <button type="submit">Verbinden met room?</button>
           </form>
         )}
       </div>
@@ -150,7 +164,7 @@ function App() {
       <div className="winner-screen">
         <h1>Game Over!</h1>
         <div className="winner-announcement">
-          <h2>The Winner is:</h2>
+          <h2>The Winnaar is:</h2>
           <div className="winner-team">{winner}</div>
         </div>
         <div className="final-scores">
@@ -159,7 +173,7 @@ function App() {
               key={teamName} 
               className={`team-score ${teamName.toLowerCase().replace(' ', '-')} ${index === 0 ? 'winner' : ''}`}
             >
-              <h3>{teamName}</h3>
+              <h3>{getTeamDisplayName(teamName)}</h3>
               <p className="team-total-score">{data.score}</p>
             </div>
           ))}
@@ -173,14 +187,14 @@ function App() {
       <div className="waiting-room">
         <h1>In Gesprek Met</h1>
         <p className="room-code">Room Code: {room}</p>
-        <h2>Teams Ready</h2>
+        <h2>Teams staan klaar!</h2>
         <div className="teams-grid">
           {Object.entries(teamPlayers).map(([teamName, teamData]) => (
             <div 
               key={teamName} 
               className={`team-card ${teamName.toLowerCase().replace(' ', '-')}`}
             >
-              <h3>{teamName}</h3>
+              <h3>{getTeamDisplayName(teamName)}</h3>
               <div className="player-count">{teamData.players.length} Players</div>
               <div className="player-list">
                 {teamData.players.map((player, index) => (
@@ -191,7 +205,7 @@ function App() {
           ))}
         </div>
         <div className="waiting-message">
-          <h2>Waiting for admin to start the game...</h2>
+          <h2>Een admin start het spel zometeen!</h2>
         </div>
       </div>
     );
@@ -204,15 +218,15 @@ function App() {
       
       <div className="question-info">
         <div className="question-counter">
-          Question {questionNumber}/{totalQuestions}
+          Vraag {questionNumber}/{totalQuestions}
         </div>
         
         {showingResults ? (
           <div className="results-display">
-            <h2>Current Question Results</h2>
+            <h2>Huidige vraag resultaten</h2>
             {correctAnswer && (
               <div className="correct-answer">
-                <h3>Correct Answer:</h3>
+                <h3>Correcte vraag:</h3>
                 <p>{correctAnswer}</p>
               </div>
             )}
@@ -224,11 +238,11 @@ function App() {
                 style={{ width: `${progress}%` }}
               />
             </div>
-            <p className="next-question-timer">Next question in: {nextQuestionTimer} seconds</p>
+            <p className="next-question-timer">Volgende vraag in: {nextQuestionTimer} seconden</p>
           </div>
         ) : (
           <div className="current-question">
-            <h2>Current Question:</h2>
+            <h2>Huidige vraag:</h2>
             <p>{currentQuestion}</p>
             {questionImage && (
               <div className="question-image-container">
@@ -253,7 +267,7 @@ function App() {
                 key={teamName} 
                 className={`team-score-card ${teamName.toLowerCase().replace(' ', '-')} ${index === 0 ? 'leading' : ''}`}
               >
-                <h3>{teamName}</h3>
+                <h3>{getTeamDisplayName(teamName)}</h3>
                 <div className="score-display">{data.score}</div>
                 <div className="team-players">
                   {data.players

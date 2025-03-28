@@ -1,9 +1,14 @@
 :root {
   --red-team: #ff5252;
-  --blue-team: #4285f4;
-  --green-team: #0f9d58;
+  --orange-team: #FF9800;
   --yellow-team: #ffab40;
+  --darkyellow-team: #FFC107;
+  --pink-team: #E91E63;
+  --lavender-team: #9C27B0;
   --purple-team: #aa47bc;
+  --turqoise-team: #009688;
+  --lightblue-team: #03A9F4;
+  --blue-team: #4285f4;
 }
 
 body {
@@ -279,10 +284,15 @@ body {
 }
 
 .team-score-card.red-team::before { background-color: var(--red-team); }
-.team-score-card.blue-team::before { background-color: var(--blue-team); }
-.team-score-card.green-team::before { background-color: var(--green-team); }
+.team-score-card.orange-team::before { background-color: var(--orange-team); }
 .team-score-card.yellow-team::before { background-color: var(--yellow-team); }
+.team-score-card.darkyellow-team::before { background-color: var(--darkyellow-team); }
+.team-score-card.pink-team::before { background-color: var(--pink-team); }
+.team-score-card.lavender-team::before { background-color: var(--lavender-team); }
 .team-score-card.purple-team::before { background-color: var(--purple-team); }
+.team-score-card.turqoise-team::before { background-color: var(--turqoise-team); }
+.team-score-card.lightblue-team::before { background-color: var(--lightblue-team); }
+.team-score-card.blue-team::before { background-color: var(--blue-team); }
 
 .team-score-card.leading {
   transform: scale(1.05);
