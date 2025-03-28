@@ -16,7 +16,7 @@ A quiz website revamped with multiplayer and a scoreboard
 
 ## Deployment
 
-To deploy this project locally run
+To deploy this project locally run.
 
 
 ### installing node modules
