@@ -3,8 +3,8 @@
   line-height: 1.5;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.87);
-  background-image: url(assets/background.jpeg);
   background-size: cover;
+  background-color: #FFF7E7;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -49,11 +49,4 @@ button {
   color: white;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
-}
-button:hover {
-  border-color: var(--primary-color);
-  color: #242424;
-  background: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(143, 229, 7, 0.3);
 }

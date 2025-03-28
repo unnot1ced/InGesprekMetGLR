@@ -1,3 +1,11 @@
+@font-face {
+  font-family: veneer Two;
+  src: url(/globalAssets/fonts/Veneer\ Two.ttf);
+}
+@font-face {
+  font-family: Poppins;
+  src: url(/globalAssets/fonts/Poppins-Black.ttf);
+}
 #root {
   width: 100%;
   margin: 0;
@@ -9,22 +17,20 @@
 }
 
 .join-div {
-  position: relative;
-  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   max-width: 800px;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   animation: pageEnter 0.6s ease-out;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .start-screen-image {
@@ -34,12 +40,9 @@
   max-height: 30vh;
   margin-bottom: 20px;
   border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   animation: scaleIn 0.8s ease-out;
   object-fit: contain;
-  filter: drop-shadow(0 0 10px rgba(143, 229, 7, 0.3));
 }
-
 form {
   display: flex;
   flex-direction: column;
@@ -47,7 +50,6 @@ form {
   width: 100%;
   max-width: 400px;
   gap: 10px;
-  background: rgba(0, 0, 0, 0.2);
   padding: 2rem;
   border-radius: 15px;
   backdrop-filter: blur(5px);
@@ -56,45 +58,69 @@ form {
 input, select {
   padding: 8px;
   font-size: medium;
+  width: 70%;
   border-radius: 10px;
-  width: 100%;
-  max-width: 300px;
   height: 40px;
   outline: none;
   margin: 5px 0;
   transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgba(159, 159, 159, 0.997);
+  color: rgb(44, 44, 44) !important; 
   font-size: 1rem;
   letter-spacing: 0.5px;
   backdrop-filter: blur(5px);
+  font-family:  Poppins;
+  font-size: 1.1em !important;
+}
+select {
+  padding: 8px;
+  font-size: medium;
+  border-radius: 10px;
+  outline: none;
+  margin: 5px 0;
+  position: relative;
+  transition: all 0.3s ease;
+  width: 75%;
+  height: 45px !important;
 }
 
-input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+select:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+input{
+  height: 30px;
+
 }
 
 input, .join-btn{
-  margin: 5%;
-  width: 60%;
-  height: 30px;
+  margin: 2%;
   outline: none;
 }
-.join-btn{
-  height: auto;
+.join-btn {
+  height: 3% !important;
+  width: 30%;
   transition: all 0.3s ease;
-  background: #8FE507;
-  color: #242424;
+  background: #AD2425;
+  color: #ffffff;
   font-weight: bold;
   padding: 12px 30px;
   border: none;
-  font-size: 1.1rem;
+  font-size: 2em;
+  font-family: veneer Two;
   letter-spacing: 1px;
   text-transform: uppercase;
-  transition: all 0.3s ease;
-  margin-top: 20px;
+  margin-top: 2%;
+  padding-top: 2vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
+
 .quiz-div{
   position: relative;
   background-color: rgba(0, 0, 0, 0.14);
@@ -280,23 +306,6 @@ li{
   color: white;
 }
 
-select {
-  padding: 8px;
-  font-size: medium;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 300px;
-  height: 40px;
-  outline: none;
-  margin: 5px 0;
-  transition: all 0.3s ease;
-}
-
-select:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 .answers-summary {
   background-color: rgba(0, 0, 0, 0.2);
   padding: 15px;
@@ -350,33 +359,7 @@ select:hover {
   animation: fadeIn 0.5s ease-out;
 }
 
-/* Animations */
-@keyframes slideIn {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
 
 @keyframes pulse {
   0% { transform: scale(1); }
@@ -389,7 +372,7 @@ select:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(143, 229, 7, 0.3);
+  box-shadow: 0 10px 20px rgba(101, 101, 100, 0.3);
 }
 
 input:focus {
@@ -397,27 +380,7 @@ input:focus {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes pageEnter {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 
-@keyframes pageExit {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-}
 
 .App > div {
   animation: pageEnter 0.6s ease-out;
@@ -499,7 +462,7 @@ h1 {
 }
 
 .admin-btn:hover {
-  background: #72b806;
+  background: #9e9e9e;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(143, 229, 7, 0.3);
 }
@@ -680,41 +643,6 @@ h1 {
   animation: fadeIn 1s ease-out;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-/* Power-ups styling */
-.powerups-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 10px 0;
-  flex-wrap: wrap;
-}
-
-.powerup-btn {
-  padding: 8px 12px;
-  border-radius: 20px;
-  border: none;
-  background-color: #4a90e2;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.powerup-btn:hover {
-  background-color: #357abd;
-  transform: translateY(-2px);
-}
-
-.powerup-btn.disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-  opacity: 0.7;
-}
 
 .admin-start-controls {
   display: flex;
@@ -750,6 +678,7 @@ h1 {
 .toggle-btn.active {
   background-color: #4a90e2;
   font-weight: bold;
+<<<<<<< Updated upstream
 }
 
 select option {
@@ -872,3 +801,6 @@ select option {
 
 
 
+=======
+}
+>>>>>>> Stashed changes

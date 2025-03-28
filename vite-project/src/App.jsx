@@ -325,7 +325,6 @@ function App() {
             alt="Quiz Start Screen" 
             className="start-screen-image"
           />
-          <h1>In gesprek met</h1>
           {roomError && <p className="room-error">{roomError}</p>}
           <form onSubmit={handleSubmit}>
             <input required placeholder='Enter your name' value={name} onChange={(e) => setName(e.target.value)} />
@@ -345,8 +344,12 @@ function App() {
             </select>
             <button type='submit' className='join-btn'>Join</button>
           </form>
+<<<<<<< Updated upstream
           
           
+=======
+        
+>>>>>>> Stashed changes
           
           {showAdminInput && (
             <form onSubmit={handleAdminAccess} className="admin-form">
