@@ -344,12 +344,8 @@ function App() {
             </select>
             <button type='submit' className='join-btn'>Join</button>
           </form>
-<<<<<<< Updated upstream
           
           
-=======
-        
->>>>>>> Stashed changes
           
           {showAdminInput && (
             <form onSubmit={handleAdminAccess} className="admin-form">
@@ -380,7 +376,6 @@ function App() {
           <p className='room-id'>Join Id: {room}</p>
           
           <div className="teams-container">
-            <h2>Teams Ready</h2>
             {Object.entries(teamPlayers).map(([teamName, teamData], teamIndex) => (
               <div 
                 key={teamName} 
