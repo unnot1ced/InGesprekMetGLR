@@ -8,9 +8,10 @@ A quiz website revamped with multiplayer and a scoreboard
 ## Authors
 
 - [@Unnot1ced](https://www.github.com/unnot1ced) (Project leader and backend)
+- [@Mohamed-Ayachi](https://github.com/Mohamed-Ayachi) (Backend)
+- [@CRazorIV](https://github.com/CRazorIV) (Feedback tester)
 - [@Erimu1](https://github.com/erimu1) (Design and CSS)
 - [@Malachite0](https://github.com/Malachite0) (Design and CSS)
-- [@Mohamed-Ayachi](https://github.com/Mohamed-Ayachi) (Backend)
 - [@TsukiV2](https://github.com/TsukiV2) (Adminstration)
 
 
