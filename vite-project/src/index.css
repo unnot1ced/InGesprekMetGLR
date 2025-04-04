@@ -27,9 +27,12 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  min-width: 320px;
   height: 100vh;
   overflow: hidden;
+  background-color: white;
+  background-size: cover;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 h1 {

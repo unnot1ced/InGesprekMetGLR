@@ -320,8 +320,10 @@ function App() {
         </div>
       ) : !info ? (
         <div className='join-div'>
+          <div className='blue-filler-div'></div>
+          <div className='start-screen-img-background'></div>
           <img 
-            src="/images/Logo_IGM-DT.svg" 
+            src="/images/logo-whitebackground.png" 
             alt="Quiz Start Screen" 
             className="start-screen-image"
           />
