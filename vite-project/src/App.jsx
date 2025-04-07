@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import io from 'socket.io-client';
 
-const socket = io("ws://localhost:5000", {
+const socket = io("https://igm-backend.onrender.com", {
   reconnection: true,
   reconnectionAttempts: 5,
   reconnectionDelay: 1000,
