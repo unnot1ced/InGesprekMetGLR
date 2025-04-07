@@ -1,14 +1,14 @@
 :root {
-  --red-team: #ff5252;
-  --orange-team: #FF9800;
-  --yellow-team: #ffab40;
-  --darkyellow-team: #FFC107;
-  --pink-team: #E91E63;
-  --lavender-team: #9C27B0;
-  --purple-team: #aa47bc;
-  --turqoise-team: #009688;
-  --lightblue-team: #03A9F4;
-  --blue-team: #4285f4;
+  --red-team-color: #B13533;
+  --orange-team-color: #D0662D;
+  --yellow-team-color: #F2CE5C;
+  --darkyellow-team-color: #EAA500;
+  --pink-team-color: #C4548C;
+  --lavender-team-color: #B297C7;
+  --purple-team-color: #5B4687;
+  --turqoise-team-color: #0AA0A0;
+  --lightblue-team-color: #97C0D4;
+  --blue-team-color: #4D95C4;
 }
 
 body {
@@ -114,11 +114,16 @@ body {
   height: 5px;
 }
 
-.team-card.red-team::before { background-color: var(--red-team); }
-.team-card.blue-team::before { background-color: var(--blue-team); }
-.team-card.green-team::before { background-color: var(--green-team); }
-.team-card.yellow-team::before { background-color: var(--yellow-team); }
-.team-card.purple-team::before { background-color: var(--purple-team); }
+.team-card.red-team:before { background-color: var(--red-team-color); }
+.team-card.orange-team:before { background-color: var(--orange-team-color); }
+.team-card.yellow-team:before { background-color: var(--yellow-team-color); }
+.team-card.darkyellow-team:before { background-color: var(--darkyellow-team-color); }
+.team-card.pink-team:before { background-color: var(--pink-team-color); }
+.team-card.lavender-team:before { background-color: var(--lavender-team-color); }
+.team-card.purple-team:before { background-color: var(--purple-team-color); }
+.team-card.turqoise-team:before { background-color: var(--turqoise-team-color); }
+.team-card.lightblue-team:before { background-color: var(--lightblue-team-color); }
+.team-card.blue-team:before { background-color: var(--blue-team-color); }
 
 .team-card h3 {
   margin-top: 0;

@@ -44,6 +44,22 @@
     background-position: -10% 130%;
 }
 
+.input-wrapper {
+  background-color: white;
+  border: solid 0.3vw black;
+  padding: 1vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vw;
+  width: 40vw;
+  height: 40vh;
+  position: relative;
+  left: 1vw;
+  top: 3vh;
+}
+
+
 .start-screen-img-background {
   position: absolute;
   left: 0;
@@ -90,9 +106,8 @@ form {
 }
 
 input, select {
-  padding: 8px;
+  padding: 1vw;
   width: 20vw;
-  height: 45px !important;
   font-size: medium;
   outline: none;
   margin: 5px 0;
@@ -100,22 +115,21 @@ input, select {
   background: rgb(255, 255, 255);
   border: 1px solid rgba(159, 159, 159, 0.997);
   color: rgb(44, 44, 44) !important; 
-  font-size: 1rem;
+  font-size: 1vw;
   letter-spacing: 0.5px;
   backdrop-filter: blur(5px);
   font-family:  Poppins;
   font-size: 1.1em !important;
   position: relative;
+  border: solid 0.1vw black;
 }
 select {
   padding: 8px;
-  font-size: medium;
   outline: none;
   margin: 5px 0;
   position: relative;
   transition: all 0.3s ease;
   width: 20vw;
-  height: 45px !important;
 }
 
 select:hover {
@@ -133,26 +147,24 @@ input, .join-btn{
   outline: none;
 }
 .join-btn {
-  height: 3% !important;
-  width: 30%;
+  height: 4vh !important;
+  width: 15vw;
   transition: all 0.3s ease;
-  background: #AD2425;
+  background: var(--red-team-color);
   color: #ffffff;
   font-weight: bold;
   padding: 12px 30px;
   border: none;
-  font-size: 2em;
+  font-size: 1.2vw;
   font-family: veneer Two;
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-top: 2%;
   padding-top: 2vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  animation: float 3s ease-in-out infinite;
 }
 
 .quiz-div{
@@ -423,7 +435,6 @@ li{
   100% { transform: scale(1); }
 }
 
-/* Join button animation */
 .join-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -587,6 +598,8 @@ h1 {
   left: 0;
   margin: 0.6vw;
   border: solid black 0.3vw;
+  background-image: url(assets/lines-1.png);
+  background-size: 100% 120%;
 }
 
 .team-card.orange-team {
@@ -598,6 +611,8 @@ h1 {
   left: 0;
   margin: 0.6vw;
   border: solid black 0.3vw;
+  background-image: url(assets/lines-circle2.png);
+  background-size: 100% 100%;
   }
 
 .team-card.yellow-team {
@@ -609,6 +624,14 @@ h1 {
     left: 20vw;
     margin: 0.6vw;
     border: solid black 0.3vw;
+    background: repeating-linear-gradient(
+    45deg,                   
+    var(--yellow-team-color),    
+    var(--yellow-team-color),  
+    var(--yellow-team-color),  
+    var(--yellow-team-color),                 
+    #e39e05 0.5vw                 
+);
   }
 
  .team-card.darkyellow-team{
@@ -620,6 +643,8 @@ h1 {
     left: 20vw;
     margin: 0.6vw;
     border: solid black 0.3vw;
+    background-image: radial-gradient(rgb(216, 74, 31) 1.5px, transparent 0);
+    background-size: 0.5vw 0.5vw;
   }
 
  .team-card.pink-team{
@@ -633,6 +658,23 @@ h1 {
       border: solid black 0.3vw;
   }
 
+  .team-card.pink-team > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .team-card.pink-team::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url(assets/lines-1.png);
+    background-size: 100% 120%;
+    background-repeat: no-repeat;
+    transform: scaleY(-1); 
+    opacity: 1;
+    pointer-events: none;
+  }
+
  .team-card.lavender-team{
       background-color: var(--lavender-team-color);
       width: 18vw;
@@ -642,6 +684,11 @@ h1 {
       left: 40vw;
       margin: 0.6vw;
       border: solid black 0.3vw;
+      background: repeating-linear-gradient(               
+        var(--lavender-team-color),    
+        var(--lavender-team-color),  
+        var(--lavender-team-color),                 
+        #733d83 0.5vw)    
   }
 
   .team-card.purple-team{
@@ -653,6 +700,9 @@ h1 {
     left: 60vw;
     margin: 0.6vw;
     border: solid black 0.3vw;
+    background-image: url(assets/Halftone-Transparent.png);
+    background-repeat: no-repeat;
+    background-position: -10% 130%;
   }
 
   .team-card.turqoise-team{
@@ -664,6 +714,9 @@ h1 {
     left: 60vw;
     margin: 0.6vw;
     border: solid black 0.3vw;
+    background-image: url(assets/lines-1.png);
+    background-size: 100% 120%;
+   
   }
 
   .team-card.lightblue-team{
@@ -675,6 +728,9 @@ h1 {
     left: 79vw;
     margin: 0.6vw;
     border: solid black 0.3vw;
+    background-image: url(assets/Halftone-Transparent.png);
+    background-repeat: no-repeat;
+    background-position: -10% 130%;
   }
 
   .team-card.blue-team{
@@ -686,21 +742,22 @@ h1 {
     left: 60vw;
     margin: 0.6vw;
     border: solid black 0.3vw;
+    background-image: url(assets/lines-circle2.png);
+    background-size: 100% 100%;
   }
 
 .team-card h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
+  margin-top: 0.5vw;
+  margin-bottom: 1vw;
   color: white;
+  font-size: 1vw;
 }
 
 .team-card h3::before {
   content: '';
   display: inline-block;
-  width: 12px;
-  height: 12px;
   border-radius: 50%;
-  margin-right: 8px;
+  margin-right: 0px;
 }
 
 .team-card.red-team h3::before { background-color: var(--red-team-color); }
@@ -806,21 +863,19 @@ select option {
   position: relative;
 }
 
-/* Team color variables */
 :root {
-  --red-team-color: #ff5252;
-  --orange-team-color: #FF9800;
-  --yellow-team-color: #ffab40;
-  --darkyellow-team-color: #FFC107;
-  --pink-team-color: #E91E63;
-  --lavender-team-color: #9C27B0;
-  --purple-team-color: #aa47bc;
-  --turqoise-team-color: #009688;
-  --lightblue-team-color: #03A9F4;
-  --blue-team-color: #4285f4;
+  --red-team-color: #B13533;
+  --orange-team-color: #D0662D;
+  --yellow-team-color: #F2CE5C;
+  --darkyellow-team-color: #EAA500;
+  --pink-team-color: #C4548C;
+  --lavender-team-color: #B297C7;
+  --purple-team-color: #5B4687;
+  --turqoise-team-color: #0AA0A0;
+  --lightblue-team-color: #97C0D4;
+  --blue-team-color: #4D95C4;
 }
 
-/* Team voting status styles */
 .team-voting-status {
   margin: 10px auto;
   padding: 10px;
@@ -880,7 +935,6 @@ select option {
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Team results styles */
 .team-results {
   margin: 15px 0;
 }
@@ -922,7 +976,6 @@ select option {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* Add these keyframe animations at the end of the file */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -1034,7 +1087,6 @@ select option {
   }
 }
 
-/* Make all transitions smoother */
 * {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }

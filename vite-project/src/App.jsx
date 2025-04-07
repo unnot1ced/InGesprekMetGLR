@@ -330,22 +330,24 @@ function App() {
           />
           {roomError && <p className="room-error">{roomError}</p>}
           <form onSubmit={handleSubmit}>
-            <input required placeholder='Enter your name' value={name} onChange={(e) => setName(e.target.value)} />
-            <input required placeholder='Enter room no' value={room} onChange={(e) => setRoom(e.target.value)} />
-            <select required value={team} onChange={(e) => setTeam(e.target.value)}>
-              <option value="">Selecteer Opleiding</option>
-              <option value="Red Team" className="team-option red-team">Media-vormgeven</option>
-              <option value="Orange Team" className="team-option orange-team">Media-manager</option>
-              <option value="Yellow Team" className="team-option yellow-team">AV-specialist</option>
-              <option value="Darkyellow Team" className="team-option darkyellow-team">Fotografie</option>
-              <option value="Pink Team" className="team-option pink-team">Redactie-medewerker</option>
-              <option value="Lavender Team" className="team-option lavender-team">Mediamaker</option>
-              <option value="Purple Team" className="team-option purple-team">Medewerker-sign</option>
-              <option value="Turqoise Team" className="team-option turqoise-team">Podium-evenementen</option>
-              <option value="Lightblue Team" className="team-option lightblue-team">ICT-media</option>
-              <option value="Blue Team" className="team-option blue-team">Creative-software-developer</option>
-            </select>
-            <button type='submit' className='join-btn'>Join</button>
+            <div className="input-wrapper">
+              <input required placeholder='Enter your name' value={name} onChange={(e) => setName(e.target.value)} />
+              <input required placeholder='Enter room no' value={room} onChange={(e) => setRoom(e.target.value)} />
+              <select required value={team} onChange={(e) => setTeam(e.target.value)}>
+                <option value="">Selecteer Opleiding</option>
+                <option value="Red Team" className="team-option red-team">Media-vormgeven</option>
+                <option value="Orange Team" className="team-option orange-team">Media-manager</option>
+                <option value="Yellow Team" className="team-option yellow-team">AV-specialist</option>
+                <option value="Darkyellow Team" className="team-option darkyellow-team">Fotografie</option>
+                <option value="Pink Team" className="team-option pink-team">Redactie-medewerker</option>
+                <option value="Lavender Team" className="team-option lavender-team">Mediamaker</option>
+                <option value="Purple Team" className="team-option purple-team">Medewerker-sign</option>
+                <option value="Turqoise Team" className="team-option turqoise-team">Podium-evenementen</option>
+                <option value="Lightblue Team" className="team-option lightblue-team">ICT-media</option>
+                <option value="Blue Team" className="team-option blue-team">Creative-software-developer</option>
+              </select>
+              <button type='submit' className='join-btn'>Join</button>
+            </div>
           </form>
           
           
