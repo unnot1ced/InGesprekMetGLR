@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 
+const url = "https://igm-backend.onrender.com";
+
 const AdminPanel = () => {
   const [socket, setSocket] = useState(null);
   const [roomId, setRoomId] = useState('');

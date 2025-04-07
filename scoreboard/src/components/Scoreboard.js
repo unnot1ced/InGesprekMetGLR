@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 import './Scoreboard.css';
 
+const url = "https://igm-backend.onrender.com";
+
 const Scoreboard = () => {
   const [socket, setSocket] = useState(null);
   const [teams, setTeams] = useState({});
