@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import './App.css';
 
-const socket = io("ws://localhost:5000", {
+const socket = io("https://igm-backend.onrender.com", {
   reconnection: true,
   reconnectionAttempts: 5,
   reconnectionDelay: 1000,
