@@ -1,0 +1,209 @@
+[
+  {
+    "round": 2,
+    "question": "Hoe heet de film uit 1985 die we net in het geluidsfragment hoorden?",
+    "answers": [
+      { "text": "Back to the History", "correct": false },
+      { "text": "Back to now", "correct": false },
+      { "text": "Back to the future", "correct": true }
+    ],
+    "type": "multiple_choice",
+    "order": 1
+  },
+  {
+    "round": 2,
+    "question": "De voorspelling 'zelfstrikkende schoenen' is uitgekomen",
+    "answers": [
+      { "text": "Waar", "correct": true },
+      { "text": "Niet waar", "correct": false }
+    ],
+    "type": "truefalse",
+    "order": 2
+  },
+  {
+    "round": 2,
+    "question": "Wat betekent WiFi",
+    "answers": [
+      { "text": "Wireless Fidelity", "correct": false },
+      { "text": "Geen betekenis, het is een merknaam", "correct": true },
+      { "text": "Afkorting van de uitvinder Willem en zijn vrouw Fiona", "correct": false }
+    ],
+    "type": "multiple_choice",
+    "order": 3
+  },
+  {
+    "round": 2,
+    "question": "In welk jaar was de eerste commerciele ruimtevlucht?",
+    "answers": [
+      { "text": "2022", "correct": false },
+      { "text": "2023", "correct": false },
+      { "text": "2024", "correct": true }
+    ],
+    "type": "multiple_choice",
+    "order": 4
+  },
+  {
+    "round": 2,
+    "question": "Hoe heet DIT nieuwe sociale platform?",
+    "answers": [
+      { "text": "Amis sociale", "correct": false },
+      { "text": "Amigos social", "correct": true },
+      { "text": "Soziale Freunde", "correct": false }
+    ],
+    "type": "multiple_choice",
+    "order": 5
+  },
+  {
+    "round": 2,
+    "question": "Wat betekent immersive?",
+    "answers": [
+      { "text": "een techniek om teksten korter te maken, zonder dat de betekenis verloren gaat", "correct": false },
+      { "text": "een term uit de psychologie die verwijst naar diepe concentratie", "correct": false },
+      { "text": "een wereld waarin je alles ervaart en het gevoel geeft dat je er echt inzet", "correct": true }
+    ],
+    "type": "multiple_choice",
+    "order": 6
+  },
+  {
+    "round": 2,
+    "question": "Wat was er eerder AI of de smartphone?",
+    "answers": [
+      { "text": "AI", "correct": true },
+      { "text": "De smartphone", "correct": false }
+    ],
+    "type": "multiple_choice",
+    "order": 7
+  },
+  {
+    "round": 2,
+    "question": "WELKE FOTO IS GEMAAKT MET AI",
+    "image1": "images/KOFFIE/noai.JPG",
+    "image2": "images/KOFFIE/ai.JPG",
+    "answers": [
+      { "text": "Foto 1", "correct": false },
+      { "text": "Foto 2", "correct": true }
+    ],
+    "type": "multiple_choice",
+    "order": 8
+  },
+  {
+    "round": 2,
+    "question": "Welke is correct?",
+    "image1": "images/1_AI_JA.webp",
+    "answers": [
+      { "text": "AI", "correct": true },
+      { "text": "NIE", "correct": false }
+    ],
+    "type": "multiple_choice",
+    "order": 9
+  },
+  {
+    "round": 2,
+    "question": "Is deze afbeelding gemaakt met AI?",
+    "image1": "images/2_AI_NEE.jpg",
+    "answers": [
+      { "text": "JA", "correct": false },
+      { "text": "NEE", "correct": true }
+    ],
+    "type": "multiple_choice",
+    "order": 10
+  },
+  {
+    "round": 2,
+    "question": "Is deze afbeelding gemaakt met AI?",
+    "image1": "images/3_AI_JA.webp",
+    "answers": [
+      { "text": "JA", "correct": true },
+      { "text": "NEE", "correct": false }
+    ],
+    "type": "multiple_choice",
+    "order": 11
+  },
+  {
+    "round": 2,
+    "question": "Is deze afbeelding gemaakt met AI?",
+    "image1": "images/4_AI_NEE.jpg",
+    "answers": [
+      { "text": "JA", "correct": false },
+      { "text": "NEE", "correct": true }
+    ],
+    "type": "multiple_choice",
+    "order": 12
+  },
+  {
+    "round": 2,
+    "question": "Doe ronden eten",
+    "type": "activity",
+    "description": "Een team moet de eerste drie lege bordjes leeg eten. 3 voor eerste team, 2 voor tweede team, 1 voor derde team.",
+    "order": 13,
+    "answers": []
+  },
+  {
+    "round": 2,
+    "question": "Hoeveel procent is bang voor ontwikkelingen AI?",
+    "answers": [
+      { "text": "15 procent is bang", "correct": false },
+      { "text": "35 procent is bang", "correct": true },
+      { "text": "65 procent is bang", "correct": false }
+    ],
+    "type": "multiple_choice",
+    "order": 14
+  },
+  {
+    "round": 2,
+    "question": "Hoe oud is de gemiddelde nederlander in 2050",
+    "answers": [
+      { "text": "83,9 jaar", "correct": false },
+      { "text": "86,5 jaar", "correct": true },
+      { "text": "88,6 jaar", "correct": false }
+    ],
+    "type": "multiple_choice",
+    "order": 15
+  },
+  {
+    "round": 2,
+    "question": "Welke 'oude bekende' is dit",
+    "image1": "images/person/robbert.jpg",
+    "answers": [
+      { "text": "Peter Pannekoek", "correct": false },
+      { "text": "Robbert Rodenburg", "correct": true },
+      { "text": "Antoon", "correct": false }
+    ],
+    "type": "multiple_choice",
+    "order": 16
+  },
+  {
+    "round": 2,
+    "question": "Wat is de gezondste sport voor je lijf?",
+    "answers": [
+      { "text": "Hardlopen", "correct": false },
+      { "text": "Karate", "correct": false },
+      { "text": "Zwemmen", "correct": true }
+    ],
+    "type": "multiple_choice",
+    "order": 17
+  },
+  {
+    "round": 2,
+    "question": "Welke van de 2 foto's laat toekomstige camouflagekleding zien?",
+    "image1": "images/camouflage/1.png",
+    "image2": "images/camouflage/2.png",
+    "answers": [
+      { "text": "Foto 1", "correct": true },
+      { "text": "Foto 2", "correct": false }
+    ],
+    "type": "multiple_choice",
+    "order": 18
+  },
+  {
+    "round": 2,
+    "question": "Wanneer is naar verwachting het huizentekort grotendeels verholpen?",
+    "answers": [
+      { "text": "2026", "correct": false },
+      { "text": "2030", "correct": true },
+      { "text": "2045", "correct": false }
+    ],
+    "type": "multiple_choice",
+    "order": 19
+  }
+] 

@@ -1,14 +1,9 @@
 :root {
   --red-team: #ff5252;
-  --orange-team: #FF9800;
-  --yellow-team: #ffab40;
-  --darkyellow-team: #FFC107;
-  --pink-team: #E91E63;
-  --lavender-team: #9C27B0;
-  --purple-team: #aa47bc;
-  --turqoise-team: #009688;
-  --lightblue-team: #03A9F4;
   --blue-team: #4285f4;
+  --green-team: #0f9d58;
+  --yellow-team: #ffab40;
+  --purple-team: #aa47bc;
   --admin-primary: #2d3748;
   --admin-secondary: #4a5568;
   --admin-accent: #3182ce;
@@ -83,6 +78,78 @@ body {
   flex-direction: column;
 }
 
+.points-management {
+  background-color: #2d2d2d;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.points-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.points-controls select,
+.points-controls input {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #4d4d4d;
+  background-color: #3d3d3d;
+  color: #f8f9fa;
+}
+
+.points-controls button {
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+}
+
+.points-controls button:hover {
+  background-color: #2980b9;
+}
+
+.round-info {
+  background-color: #2d2d2d;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.round-complete {
+  color: #2ecc71;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.all-answered-notification {
+  background-color: #27ae60;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+.team-score {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
 .admin-header {
   background-color: var(--admin-primary);
   color: white;
@@ -131,6 +198,15 @@ body {
   cursor: not-allowed;
 }
 
+.start-round-btn {
+  background-color: var(--blue-team);
+  color: white;
+}
+
+.start-round-btn:hover {
+  background-color: #1565c0;
+}
+
 .next-question-btn {
   background-color: var(--admin-accent);
   color: white;
@@ -155,7 +231,7 @@ body {
   background-color: #f7fafc;
 }
 
-.waiting-room-panel, .game-panel, .game-over-panel {
+.waiting-room-panel, .game-panel, .game-over-panel, .round-screen-panel {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -187,11 +263,17 @@ body {
   height: 5px;
 }
 
-.team-card.red-team::before { background-color: var(--red-team); }
-.team-card.blue-team::before { background-color: var(--blue-team); }
-.team-card.green-team::before { background-color: var(--green-team); }
-.team-card.yellow-team::before { background-color: var(--yellow-team); }
-.team-card.purple-team::before { background-color: var(--purple-team); }
+
+.team-card.fotografie::before { background-color: #FF5722; }
+.team-card.mediamanagement::before { background-color: #009688; }
+.team-card.redactie::before { background-color: #673AB7; }
+.team-card.software::before { background-color: #03A9F4; }
+.team-card.av::before { background-color: #E91E63; }
+.team-card.pet::before { background-color: #CDDC39; }
+.team-card.mediavormgeven::before { background-color: #795548; }
+.team-card.ict-&-mediatechnologie::before { background-color: #607D8B; }
+.team-card.sign::before { background-color: #FFC107; }
+.team-card.mediamaker::before { background-color: #8BC34A; }
 
 .team-card h3 {
   margin-top: 0;
@@ -241,13 +323,32 @@ body {
 }
 
 .question-image-container {
-  max-width: 400px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .question-image {
   max-width: 100%;
-  border-radius: 6px;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Add specific styles for GIFs */
+.question-image[src$=".gif"] {
+  max-height: 500px; /* Slightly larger for GIFs */
+  object-fit: contain;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .correct-answer {
@@ -290,15 +391,20 @@ body {
 }
 
 .player-answer.red-team { border-left-color: var(--red-team); }
-.player-answer.orange-team { border-left-color: var(--orange-team); }
-.player-answer.yellow-team { border-left-color: var(--yellow-team); }
-.player-answer.darkyellow-team { border-left-color: var(--darkyellow-team); }
-.player-answer.pink-team { border-left-color: var(--pink-team); }
-.player-answer.lavender-team { border-left-color: var(--lavender-team); }
-.player-answer.purple-team { border-left-color: var(--purple-team); }
-.player-answer.turqoise-team { border-left-color: var(--turqoise-team); }
-.player-answer.lightblue-team { border-left-color: var(--lightblue-team); }
 .player-answer.blue-team { border-left-color: var(--blue-team); }
+.player-answer.green-team { border-left-color: var(--green-team); }
+.player-answer.yellow-team { border-left-color: var(--yellow-team); }
+.player-answer.purple-team { border-left-color: var(--purple-team); }
+.player-answer.fotografie { border-left-color: #FF5722; }
+.player-answer.mediamanagement { border-left-color: #009688; }
+.player-answer.redactie { border-left-color: #673AB7; }
+.player-answer.software { border-left-color: #03A9F4; }
+.player-answer.av { border-left-color: #E91E63; }
+.player-answer.pet { border-left-color: #CDDC39; }
+.player-answer.mediavormgeven { border-left-color: #795548; }
+.player-answer.ict-&-mediatechnologie { border-left-color: #607D8B; }
+.player-answer.sign { border-left-color: #FFC107; }
+.player-answer.mediamaker { border-left-color: #8BC34A; }
 
 .player-team {
   font-size: 0.85rem;
@@ -335,15 +441,20 @@ body {
 }
 
 .team-score.red-team { border-left-color: var(--red-team); }
-.team-score.orange-team { border-left-color: var(--orange-team); }
-.team-score.yellow-team { border-left-color: var(--yellow-team); }
-.team-score.darkyellow-team { border-left-color: var(--darkyellow-team); }
-.team-score.pink-team { border-left-color: var(--pink-team); }
-.team-score.lavender-team { border-left-color: var(--lavender-team); }
-.team-score.purple-team { border-left-color: var(--purple-team); }
-.team-score.turqoise-team { border-left-color: var(--turqoise-team); }
-.team-score.lightblue-team { border-left-color: var(--lightblue-team); }
 .team-score.blue-team { border-left-color: var(--blue-team); }
+.team-score.green-team { border-left-color: var(--green-team); }
+.team-score.yellow-team { border-left-color: var(--yellow-team); }
+.team-score.purple-team { border-left-color: var(--purple-team); }
+.team-score.fotografie { border-left-color: #FF5722; }
+.team-score.mediamanagement { border-left-color: #009688; }
+.team-score.redactie { border-left-color: #673AB7; }
+.team-score.software { border-left-color: #03A9F4; }
+.team-score.av { border-left-color: #E91E63; }
+.team-score.pet { border-left-color: #CDDC39; }
+.team-score.mediavormgeven { border-left-color: #795548; }
+.team-score.ict-&-mediatechnologie { border-left-color: #607D8B; }
+.team-score.sign { border-left-color: #FFC107; }
+.team-score.mediamaker { border-left-color: #8BC34A; }
 
 .team-score.winner {
   background-color: rgba(15, 157, 88, 0.1);
@@ -389,4 +500,314 @@ body {
   .game-panel {
     grid-template-columns: 1fr;
   }
+}
+
+/* Add these styles at the end of the file */
+
+.activity-badge {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.activity-round-btn {
+  background-color: #ff6b6b;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+.activity-round-btn:hover {
+  background-color: #fa5252;
+}
+
+.end-activity-btn {
+  background-color: #ff9f43;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.end-activity-btn:hover {
+  background-color: #ff922b;
+}
+
+.large-btn {
+  font-size: 1.2rem;
+  padding: 15px 25px;
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.activity-round-panel {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.activity-description {
+  background-color: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.activity-description h3 {
+  margin-top: 0;
+  color: #ff6b6b;
+}
+
+.activity-description p {
+  margin-bottom: 0;
+}
+
+.round-options {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 15px;
+}
+
+.points-manager {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.points-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.points-controls select {
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+  padding: 10px;
+  border-radius: 4px;
+  min-width: 200px;
+  font-size: 1rem;
+}
+
+.points-amount {
+  display: flex;
+  align-items: center;
+}
+
+.points-amount label {
+  margin-right: 10px;
+}
+
+.points-amount input {
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+  padding: 10px;
+  border-radius: 4px;
+  width: 60px;
+  font-size: 1rem;
+}
+
+.points-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.add-points-btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.add-points-btn:hover {
+  background-color: #45a049;
+}
+
+.remove-points-btn {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.remove-points-btn:hover {
+  background-color: #d32f2f;
+}
+
+.add-points-btn:disabled,
+.remove-points-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.media-error {
+  color: #dc3545;
+  padding: 10px;
+  background-color: rgba(220, 53, 69, 0.1);
+  border-radius: 4px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.activity-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+.activity-option-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #555;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.activity-option-btn.active {
+  background-color: #e74c3c;
+  transform: scale(1.05);
+}
+
+.activity-option-btn:hover:not(.active) {
+  background-color: #777;
+}
+
+.activity-controls {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.admin-controls-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.admin-controls-row button {
+  flex: 1;
+}
+
+.force-activity-container {
+  display: flex;
+  flex: 1;
+}
+
+.activity-select {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.force-activity-container .activity-round-btn {
+  border-radius: 0 4px 4px 0;
+  margin-left: -1px; /* Fix double border issue */
+}
+
+.end-quiz-btn {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.end-quiz-btn:hover {
+  background-color: #c9302c;
+}
+
+.admin-controls {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+}
+
+.team-select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #6c757d;
+  border-radius: 8px;
+  background-color: #343a40;
+  color: #ffffff;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.team-select:hover {
+  border-color: #007bff;
+  background-color: #495057;
+}
+
+.team-select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Style the dropdown options */
+.team-select option {
+  background-color: #343a40;
+  color: #ffffff;
+  padding: 12px;
+  font-size: 16px;
+}
+
+/* Style the dropdown when open */
+.team-select:focus option {
+  background-color: #495057;
+  color: #ffffff;
+}
+
+/* Style the selected option */
+.team-select option:checked {
+  background-color: #007bff;
+  color: #ffffff;
 }
